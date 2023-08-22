@@ -1,5 +1,5 @@
 {
-  "name": "@acme/nextjs",
+  "name": "@twitter/nextjs",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -13,9 +13,7 @@
     "with-env": "dotenv -e ../../.env --"
   },
   "dependencies": {
-    "@acme/api": "^0.1.0",
-    "@acme/auth": "^0.1.0",
-    "@acme/db": "^0.1.0",
+    "@clerk/nextjs": "^4.23.2",
     "@t3-oss/env-nextjs": "^0.6.1",
     "@tanstack/react-query": "^4.33.0",
     "@tanstack/react-query-devtools": "^4.33.0",
@@ -24,6 +22,9 @@
     "@trpc/next": "^10.37.1",
     "@trpc/react-query": "^10.37.1",
     "@trpc/server": "^10.37.1",
+    "@twitter/api": "^0.1.0",
+    "@twitter/auth": "^0.1.0",
+    "@twitter/db": "^0.1.0",
     "next": "^13.4.19",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -31,10 +32,10 @@
     "zod": "^3.22.2"
   },
   "devDependencies": {
-    "@acme/eslint-config": "^0.2.0",
-    "@acme/prettier-config": "^0.1.0",
-    "@acme/tailwind-config": "^0.1.0",
-    "@acme/tsconfig": "^0.1.0",
+    "@twitter/eslint-config": "^0.2.0",
+    "@twitter/prettier-config": "^0.1.0",
+    "@twitter/tailwind-config": "^0.1.0",
+    "@twitter/tsconfig": "^0.1.0",
     "@types/node": "^18.17.7",
     "@types/react": "^18.2.20",
     "@types/react-dom": "^18.2.7",
@@ -47,10 +48,10 @@
   "eslintConfig": {
     "root": true,
     "extends": [
-      "@acme/eslint-config/base",
-      "@acme/eslint-config/nextjs",
-      "@acme/eslint-config/react"
+      "@twitter/eslint-config/base",
+      "@twitter/eslint-config/nextjs",
+      "@twitter/eslint-config/react"
     ]
   },
-  "prettier": "@acme/prettier-config"
+  "prettier": "@twitter/prettier-config"
 }

@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import "~/styles/globals.css";
 
 import { headers } from "next/headers";
+import { ClerkProvider } from "@clerk/nextjs";
 
 import { TRPCReactProvider } from "./providers";
 
@@ -33,7 +34,7 @@ export default function Layout(props: { children: React.ReactNode }) {
     <html lang="en">
       <body className={["font-sans", fontSans.variable].join(" ")}>
         <TRPCReactProvider headers={headers()}>
-          {props.children}
+          <ClerkProvider>{props.children}</ClerkProvider>
         </TRPCReactProvider>
       </body>
     </html>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useAuth } from "@clerk/nextjs";
 
 import { api } from "~/utils/api";
 import type { RouterOutputs } from "~/utils/api";
@@ -102,6 +103,9 @@ export function PostCard(props: {
   const context = api.useContext();
   const deletePost = api.post.delete.useMutation();
 
+  const user = useAuth();
+  const isOwner = user?.userId === props.post.authorId;
+
   return (
     <div className="flex flex-row rounded-lg bg-white/10 p-4 transition-all hover:scale-[101%]">
       <div className="flex-grow">
@@ -111,6 +115,7 @@ export function PostCard(props: {
       <div>
         <button
           className="cursor-pointer text-sm font-bold uppercase text-pink-400"
+          disabled={!isOwner}
           onClick={async () => {
             await deletePost.mutateAsync(props.post.id);
             await context.post.all.invalidate();

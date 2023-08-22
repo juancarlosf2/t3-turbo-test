@@ -1,5 +1,5 @@
 {
-  "name": "@acme/db",
+  "name": "@twitter/db",
   "version": "0.1.0",
   "private": true,
   "main": "./index.ts",
@@ -17,9 +17,9 @@
     "drizzle-orm": "^0.28.3"
   },
   "devDependencies": {
-    "@acme/eslint-config": "^0.2.0",
-    "@acme/prettier-config": "^0.1.0",
-    "@acme/tsconfig": "^0.1.0",
+    "@twitter/eslint-config": "^0.2.0",
+    "@twitter/prettier-config": "^0.1.0",
+    "@twitter/tsconfig": "^0.1.0",
     "dotenv-cli": "^7.3.0",
     "drizzle-kit": "^0.19.13",
     "eslint": "^8.47.0",
@@ -29,8 +29,8 @@
   "eslintConfig": {
     "root": true,
     "extends": [
-      "@acme/eslint-config/base"
+      "@twitter/eslint-config/base"
     ]
   },
-  "prettier": "@acme/prettier-config"
+  "prettier": "@twitter/prettier-config"
 }

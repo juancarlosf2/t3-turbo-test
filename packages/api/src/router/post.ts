@@ -1,6 +1,5 @@
+import { desc, eq, schema } from "@twitter/db";
 import { z } from "zod";
-
-import { desc, eq, schema } from "@acme/db";
 
 import { createTRPCRouter, protectedProcedure, publicProcedure } from "../trpc";
 
@@ -31,10 +30,20 @@ export const postRouter = createTRPCRouter({
       }),
     )
     .mutation(({ ctx, input }) => {
-      return ctx.db.insert(schema.post).values(input);
+      const userId = ctx.session.userId;
+      return ctx.db.insert(schema.post).values({ ...input, authorId: userId });
     }),
 
-  delete: publicProcedure.input(z.number()).mutation(({ ctx, input }) => {
-    return ctx.db.delete(schema.post).where(eq(schema.post.id, input));
-  }),
+  delete: protectedProcedure
+    .input(z.number())
+    .mutation(async ({ ctx, input }) => {
+      const post = await ctx.db.query.post.findFirst({
+        where: eq(schema.post.id, input),
+      });
+      if (ctx.session.userId !== post?.authorId) {
+        throw new Error("You are not the author of this post");
+      }
+
+      return ctx.db.delete(schema.post).where(eq(schema.post.id, input));
+    }),
 });
