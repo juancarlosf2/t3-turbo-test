@@ -1,6 +1,5 @@
 // Importing env files here to validate on build
 import "./src/env.mjs";
-import "@twitter/auth/env.mjs";
 
 /** @type {import("next").NextConfig} */
 const config = {
